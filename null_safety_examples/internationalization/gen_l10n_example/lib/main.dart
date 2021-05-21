@@ -9,31 +9,35 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // #enddocregion AppLocalizationsImport
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
 // #docregion MaterialApp
     return MaterialApp(
       title: 'Localizations Sample App',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en', ''), // English, no country code
-        const Locale('es', ''), // Spanish, no country code
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('es', ''), // Spanish, no country code
       ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
 // #enddocregion MaterialApp
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -47,12 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // according to the system locale of the target platform.
         // Switching between English and Spanish locales should
         // cause this text to update.
-        title: Text(AppLocalizations.of(context)!.helloWorld),
+        title: Text(AppLocalizations.of(context)!.helloWorldOn(DateTime.now())),
       ),
     );
   }
 }
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
